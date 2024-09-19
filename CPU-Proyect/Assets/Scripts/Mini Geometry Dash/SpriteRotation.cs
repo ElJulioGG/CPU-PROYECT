@@ -6,7 +6,7 @@ public class Rotation : MonoBehaviour
 {
     private GameObject Player; // Referencia al componente CubeMovement
     public CubeMovement cubeMovement;
-    [SerializeField] private float RotationSpeed = 0.82f;
+    [SerializeField] private float RotationSpeed = 0.7f;
 
     private void Start()
     {
@@ -19,7 +19,6 @@ public class Rotation : MonoBehaviour
         // Comprueba si isGrounded es falso en CubeMovement
         if (!cubeMovement.isGrounded)   
         {
-            print("black abbby yoda");
             transform.Rotate(0, 0, -RotationSpeed); // Rota si no está en el suelo
         }
 

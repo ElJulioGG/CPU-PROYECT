@@ -8,7 +8,6 @@ public class CubeMovement : MonoBehaviour
     [SerializeField] private float MagnitudDeSalto = 10f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform feetpos;
-    [SerializeField] private float RotationSpeed = 0.5f;
     [SerializeField] private float DistanciaSuelo = 0.009f;
 
     [SerializeField] public bool isGrounded = false;
