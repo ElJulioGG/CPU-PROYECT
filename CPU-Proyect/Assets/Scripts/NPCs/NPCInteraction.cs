@@ -6,6 +6,12 @@ public class NPCInteraction : MonoBehaviour
 {
     // Start is called before the first frame update
     private NPCController npc;
+    private PlayerControls playerControls;
+
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "NPC")
@@ -14,7 +20,7 @@ public class NPCInteraction : MonoBehaviour
 
             npc = collision.gameObject.GetComponent<NPCController>();
             print("Player Can Dialog");
-            if (Input.GetKey(KeyCode.E))
+            if (playerControls.Actions.Interact.WasPerformedThisFrame())
             {
                 print("Player in dialog");
                 GameManager.instance.playerIsInDialog = true;

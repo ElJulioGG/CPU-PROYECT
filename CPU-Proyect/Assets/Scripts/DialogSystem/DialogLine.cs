@@ -8,6 +8,8 @@ namespace DialogSystem
 {
     public class DialogLine : DialogBaseClass
     {
+
+        private PlayerControls playerControls;
         private TMP_Text textHolder;
 
         [Header("Text")]
@@ -29,6 +31,7 @@ namespace DialogSystem
         private IEnumerator LineApear;
         private void Awake()
         {
+            playerControls = new PlayerControls();
             imageHolder.sprite = charSprite;
             imageHolder.preserveAspect = true;
         }
@@ -41,7 +44,7 @@ namespace DialogSystem
 
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.Space) && canClick)
+            if (playerControls.Actions. && canClick)
             {
                 if (textHolder.text != input)
                 {

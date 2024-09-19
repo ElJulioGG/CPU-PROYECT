@@ -6,6 +6,11 @@ namespace DialogSystem
 {
     public class DialogBaseClass : MonoBehaviour
     {
+        private PlayerControls playerControls;
+        private void Awake()
+        {
+            playerControls = new PlayerControls();
+        }
         public bool finished { get; protected set; }
 
         // The method to start the coroutine for writing text
@@ -30,7 +35,7 @@ namespace DialogSystem
             }
 
             // Wait for the player to release the 'E' key
-            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.E));
+            yield return new WaitUntil(() => playerControls.Actions.Interact.WasReleasedThisFrame());
 
             finished = true; // Mark the dialog as finished
         }

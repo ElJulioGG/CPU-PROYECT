@@ -167,7 +167,6 @@ public class Movement : MonoBehaviour
     {
         if ((switchOrientation == true && inputMovement > 0) || (switchOrientation == false && inputMovement < 0))
         {
-
             switchOrientation = !switchOrientation;
             spritePlayer.transform.localScale = new Vector2(-spritePlayer.transform.localScale.x, spritePlayer.transform.localScale.y);
             //spriteHands1.transform.localScale = new Vector2(-spriteHands1.transform.localScale.x, spriteHands1.transform.localScale.y);
