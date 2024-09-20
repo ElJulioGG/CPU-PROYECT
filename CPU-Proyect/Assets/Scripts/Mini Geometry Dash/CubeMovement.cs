@@ -12,9 +12,12 @@ public class CubeMovement : MonoBehaviour
 
     [SerializeField] public bool isGrounded = false;
     private bool isJumping = false;
-
+    private float speed = 7f;
     private void Update()
     {
+
+        transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+
         isGrounded = Physics2D.OverlapCircle(feetpos.position, DistanciaSuelo, groundLayer);
         if (isGrounded && Input.GetButton("Jump"))
         {
@@ -25,6 +28,14 @@ public class CubeMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.tag == "Spike")
+        {
+            Destroy(gameObject);
         }
     }
 }
