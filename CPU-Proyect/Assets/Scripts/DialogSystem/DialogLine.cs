@@ -44,7 +44,7 @@ namespace DialogSystem
 
         private void Update()
         {
-            if (playerControls.Actions. && canClick)
+            if (playerControls.Actions.Interact.WasPerformedThisFrame() && canClick)
             {
                 if (textHolder.text != input)
                 {
