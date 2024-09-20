@@ -13,10 +13,11 @@ public class RhythmManager : MonoBehaviour
 
     public float[] instructionTimes; // Asigna estos tiempos desde Unity
     public KeyCode[] keysToPress; // Asigna las teclas correspondientes desde Unity
+    public float beforeThreshold = 0.1f; // Margen de error antes del beat
+    public float afterThreshold = 0.1f; // Margen de error después del beat
 
     private string[] instructions = { "espera", "presiona!!" };
     private int currentInstructionIndex = 0;
-    public float timeThreshold;
     private bool isPlayerActive = true;
 
     void Start()
@@ -37,6 +38,7 @@ public class RhythmManager : MonoBehaviour
         // Comprobar si el jugador ha presionado la tecla correcta en el momento adecuado
         if (currentInstructionIndex < instructionTimes.Length)
         {
+            // Verificar si se ha presionado la tecla correspondiente
             if (Input.GetKeyDown(keysToPress[currentInstructionIndex]))
             {
                 if (CheckBeat(currentTime))
@@ -56,7 +58,8 @@ public class RhythmManager : MonoBehaviour
     {
         if (currentInstructionIndex < instructionTimes.Length)
         {
-            return Mathf.Abs(currentTime - instructionTimes[currentInstructionIndex]) < timeThreshold;
+            float instructionTime = instructionTimes[currentInstructionIndex];
+            return (currentTime >= instructionTime - beforeThreshold) && (currentTime <= instructionTime + afterThreshold);
         }
         return false;
     }
@@ -68,7 +71,14 @@ public class RhythmManager : MonoBehaviour
             if (currentInstructionIndex < instructions.Length)
             {
                 instructionText.text = instructions[currentInstructionIndex];
-                yield return new WaitForSeconds(instructionTimes[currentInstructionIndex] - audioSource.time);
+
+                // Esperar hasta el momento del beat
+                float waitTime = instructionTimes[currentInstructionIndex] - audioSource.time;
+                if (waitTime > 0)
+                {
+                    yield return new WaitForSeconds(waitTime);
+                }
+
                 currentInstructionIndex++;
             }
             else
@@ -80,6 +90,7 @@ public class RhythmManager : MonoBehaviour
 
     public void LoseLife()
     {
+        totalLives--;
         if (totalLives <= 0)
         {
             isPlayerActive = false;
@@ -90,7 +101,6 @@ public class RhythmManager : MonoBehaviour
         {
             instructionText.text = $"Te quedan {totalLives} vidas";
         }
-        totalLives--;
     }
 
     private IEnumerator RestartSceneAfterDelay(float delay)
