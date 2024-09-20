@@ -186,5 +186,12 @@ public class Movement : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.tag == "Bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
