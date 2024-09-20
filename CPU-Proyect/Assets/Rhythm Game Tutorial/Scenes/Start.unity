@@ -331,6 +331,8 @@ MonoBehaviour:
   theBS: {fileID: 2101581009}
   currentScore: 0
   scorePetNote: 100
+  scorePerGoodNote: 125
+  scorePerfectNote: 150
   currentMultiplier: 1
   multiplierTracker: 0
   multiplierThreholds: 0300000004000000080000000c000000
@@ -1205,6 +1207,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 276
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!58 &735126819
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1523,6 +1529,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 273
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!1 &764092896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1751,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 273
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!58 &802530026
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1956,6 +1970,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 274
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!58 &963141175
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2092,6 +2110,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 275
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!58 &1037841127
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2315,6 +2337,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 276
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!1 &1160336783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,6 +2556,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 274
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!1 &1212973124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,6 +2816,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 276
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!58 &1353930643
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3088,6 +3122,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 275
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!1 &1601014004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,6 +3514,10 @@ MonoBehaviour:
   canBePressed: 0
   obtained: 0
   keyToPress: 276
+  hiteEffect: {fileID: 6236889164839683250, guid: d9a91aa08b578a64ca5b3e5fa116c1bb, type: 3}
+  godEffect: {fileID: 3845023300146737181, guid: 73a2f20ccdd32eb41bf5cf14918716a1, type: 3}
+  perfectEffect: {fileID: 7810222849199985736, guid: 534fbcc62373a9545a8b9765676316c6, type: 3}
+  missedEffect: {fileID: 8208299838174594455, guid: a14b5507fcded004a9e37b13624c46aa, type: 3}
 --- !u!1 &1791990392
 GameObject:
   m_ObjectHideFlags: 0

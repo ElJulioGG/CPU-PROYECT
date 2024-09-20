@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Spike
   - Bullet
+  - Undefined
+  - Activator
   layers:
   - Default
   - TransparentFX
@@ -44,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Arrow
+    uniqueID: 2073772403
     locked: 0
