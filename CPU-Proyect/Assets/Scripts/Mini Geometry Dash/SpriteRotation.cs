@@ -6,8 +6,8 @@ public class Rotation : MonoBehaviour
 {
     private GameObject Player; // Referencia al componente CubeMovement
     public CubeMovement cubeMovement;
-    [SerializeField] private float RotationSpeed = 0.7f;
-
+    [SerializeField] private float RotationSpeed = 1f;
+  
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
