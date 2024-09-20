@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float MagnitudDeSalto = 10f;
+    [SerializeField] private float MagnitudDeSalto = 15f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform feetpos;
     [SerializeField] private float DistanciaSuelo = 0.009f;
