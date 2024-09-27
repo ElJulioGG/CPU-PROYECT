@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private Vector2 movement;
     [SerializeField] InputAction rollAction;
+    [SerializeField] InputAction interactAction;
     private PlayerControls playerControls;
 
     private Rigidbody2D rb;
@@ -96,6 +97,7 @@ public class Movement : MonoBehaviour
     {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
         rollAction = playerControls.Actions.Roll;
+        interactAction = playerControls.Actions.Interact;
     }
     private void Move()
     {
@@ -193,5 +195,26 @@ public class Movement : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    // Start is called before the first frame update
+   /// private NPCController npc;
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "NPC")
+    //    {
+    //        GameManager.instance.playerCanDialog = true;
 
+    //        npc = collision.gameObject.GetComponent<NPCController>();
+    //        print("Player Can Dialog");
+    //        if (interactAction.WasPerformedThisFrame())
+    //        {
+    //            print("Player in dialog");
+    //            GameManager.instance.playerIsInDialog = true;
+    //            GameManager.instance.playerCanMove = false;
+    //            npc.ActiveDialog();
+
+    //        }
+    //    }
+    //}
+
+   
 }

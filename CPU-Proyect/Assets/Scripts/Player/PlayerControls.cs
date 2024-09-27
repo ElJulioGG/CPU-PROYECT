@@ -180,6 +180,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""4955f8e4-8d2e-48f8-9ca2-fcf9716730d1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -229,6 +238,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c8740df3-4834-4f5d-bbaa-5d6d5207ab8e"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""352cf82d-ef3a-48a3-ae23-0ba285ec969c"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -248,6 +268,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""SkipDialog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a885da11-080e-40d3-9fd6-be52f6e1a20a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -262,6 +293,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Actions_Roll = m_Actions.FindAction("Roll", throwIfNotFound: true);
         m_Actions_Interact = m_Actions.FindAction("Interact", throwIfNotFound: true);
         m_Actions_SkipDialog = m_Actions.FindAction("SkipDialog", throwIfNotFound: true);
+        m_Actions_Newaction = m_Actions.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +404,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_Roll;
     private readonly InputAction m_Actions_Interact;
     private readonly InputAction m_Actions_SkipDialog;
+    private readonly InputAction m_Actions_Newaction;
     public struct ActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -379,6 +412,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_Actions_Roll;
         public InputAction @Interact => m_Wrapper.m_Actions_Interact;
         public InputAction @SkipDialog => m_Wrapper.m_Actions_SkipDialog;
+        public InputAction @Newaction => m_Wrapper.m_Actions_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -397,6 +431,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SkipDialog.started += instance.OnSkipDialog;
             @SkipDialog.performed += instance.OnSkipDialog;
             @SkipDialog.canceled += instance.OnSkipDialog;
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -410,6 +447,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SkipDialog.started -= instance.OnSkipDialog;
             @SkipDialog.performed -= instance.OnSkipDialog;
             @SkipDialog.canceled -= instance.OnSkipDialog;
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -436,5 +476,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSkipDialog(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

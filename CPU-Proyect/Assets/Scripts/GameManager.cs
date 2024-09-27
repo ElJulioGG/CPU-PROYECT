@@ -29,4 +29,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void setPlayerCanMove(bool newState)
+    {
+        playerCanMove = newState;
+    }
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -8,26 +10,47 @@ public class NPCInteraction : MonoBehaviour
     private NPCController npc;
     private PlayerControls playerControls;
 
+    [SerializeField] private Vector2 movement;
+    [SerializeField] InputAction rollAction;
+    [SerializeField] InputAction interactAction;
     private void Awake()
     {
         playerControls = new PlayerControls();
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnEnable()
     {
-        if (collision.gameObject.tag == "NPC")
+        playerControls.Enable(); // Enable the input actions
+    }
+    private void Update()
+    {
+        PlayerInput();
+        if (GameManager.instance.playerCanAction)
         {
-            GameManager.instance.playerCanDialog = true;
-
-            npc = collision.gameObject.GetComponent<NPCController>();
-            print("Player Can Dialog");
-            if (playerControls.Actions.Interact.WasPerformedThisFrame())
+            if ((interactAction.WasPressedThisFrame()) && GameManager.instance.playerCanDialog)
             {
                 print("Player in dialog");
                 GameManager.instance.playerIsInDialog = true;
                 GameManager.instance.playerCanMove = false;
+                GameManager.instance.playerCanDialog = false;
                 npc.ActiveDialog();
 
             }
+        }
+    }
+    private void PlayerInput()
+    {
+        movement = playerControls.Movement.Move.ReadValue<Vector2>();
+        rollAction = playerControls.Actions.Roll;
+        interactAction = playerControls.Actions.Interact;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "NPC" && !GameManager.instance.playerIsInDialog)
+        {
+            GameManager.instance.playerCanDialog = true;
+            npc = collision.gameObject.GetComponent<NPCController>();
+
+            print("Player Can Dialog");
         }
     }
 

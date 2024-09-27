@@ -158,6 +158,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "4955f8e4-8d2e-48f8-9ca2-fcf9716730d1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -207,6 +216,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c8740df3-4834-4f5d-bbaa-5d6d5207ab8e",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "352cf82d-ef3a-48a3-ae23-0ba285ec969c",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -224,6 +244,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SkipDialog",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a885da11-080e-40d3-9fd6-be52f6e1a20a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
