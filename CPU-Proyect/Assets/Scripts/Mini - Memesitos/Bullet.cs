@@ -11,6 +11,10 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private float timer = 0f;
 
+    // Health Test stuff
+    public GameObject player;
+    public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +42,14 @@ public class Bullet : MonoBehaviour
         // {
         //     Destroy(gameObject);
         // }
+        
+        // Health test on hit
+        //if (other.gameObject.CompareTag("Player"))
+        //{
+        //    
+        //}
     }
+    
 }
 //using System.Collections;
 //using System.Collections.Generic;
