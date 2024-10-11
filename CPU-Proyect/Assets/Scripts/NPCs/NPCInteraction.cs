@@ -9,6 +9,7 @@ public class NPCInteraction : MonoBehaviour
     // Start is called before the first frame update
     private NPCController npc;
     private PlayerControls playerControls;
+    public bool showInteract;
 
     [SerializeField] private Vector2 movement;
     [SerializeField] InputAction rollAction;
@@ -28,6 +29,7 @@ public class NPCInteraction : MonoBehaviour
         {
             if ((interactAction.WasPressedThisFrame()) && GameManager.instance.playerCanDialog)
             {
+                showInteract = false;
                 print("Player in dialog");
                 GameManager.instance.playerIsInDialog = true;
                 GameManager.instance.playerCanMove = false;
@@ -47,9 +49,10 @@ public class NPCInteraction : MonoBehaviour
     {
         if (collision.gameObject.tag == "NPC" && !GameManager.instance.playerIsInDialog)
         {
+            showInteract = true;
             GameManager.instance.playerCanDialog = true;
             npc = collision.gameObject.GetComponent<NPCController>();
-
+           
             print("Player Can Dialog");
         }
     }
@@ -58,8 +61,10 @@ public class NPCInteraction : MonoBehaviour
     {
         if (collision.gameObject.tag == "NPC")
         {
+            showInteract = false;
             npc = null;
             GameManager.instance.playerCanDialog = false;
+            
         }
     }
     private bool inDialogue()
