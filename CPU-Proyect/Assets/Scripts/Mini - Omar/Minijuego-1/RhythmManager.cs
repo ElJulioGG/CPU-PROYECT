@@ -1,116 +1,190 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class RhythmManager : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public Text instructionText;
-    public Text timeText;
-    public Color correctColor = Color.green;
-    public Color incorrectColor = Color.red;
+    public AudioSource gameplayMusic; // Música de juego
+    public AudioSource startMusic; // Música que suena antes de empezar el juego
+    public AudioSource winMusic; // Música que suena al ganar
+    public AudioSource loseMusic; // Música que suena al perder
+    public float beatMarginOfError = 0.1f;
     public int totalLives = 3;
-
-    public float[] instructionTimes; // Asigna estos tiempos desde Unity
-    public KeyCode[] keysToPress; // Asigna las teclas correspondientes desde Unity
-    public float beforeThreshold = 0.1f; // Margen de error antes del beat
-    public float afterThreshold = 0.1f; // Margen de error después del beat
-
-    private string[] instructions = { "espera", "presiona!!" };
-    private int currentInstructionIndex = 0;
-    private bool isPlayerActive = true;
+    private int currentLives;
+    public Text livesText;
+    public Text gameOverText;
+    public Canvas winCanvas; // Canvas para el mensaje de victoria
+    public GameObject winObject;
+    public Canvas mainCanvas; // Canvas principal del juego
+    public PlayerController playerController;
+    public EnemyController enemyController;
+    public bool isGameOver = false;
+    public CameraShake cameraShake;
+    public Text scoreText; // Texto para mostrar la puntuación
+    public int score = 0; // Puntuación del jugador
+    public int targetScore = 10; // Puntuación para ganar
 
     void Start()
     {
-        audioSource.Play();
-        StartCoroutine(ShowInstructionsRoutine());
+        if (cameraShake == null)
+        {
+            cameraShake = Camera.main.GetComponent<CameraShake>();
+        }
+
+        currentLives = totalLives;
+        UpdateLivesText();
+        UpdateScoreText();
+        gameOverText.text = "";
+        winCanvas.gameObject.SetActive(false);  // Desactivar el Canvas de victoria inicialmente
+        mainCanvas.gameObject.SetActive(true);  // Inicialmente desactivamos el Canvas de victoria
+
+        // Reproducir música de inicio antes de comenzar el juego
+        if (startMusic != null)
+        {
+            startMusic.Play();
+        }
     }
 
     void Update()
     {
-        if (!isPlayerActive) return;
-
-        float currentTime = audioSource.time;
-
-        // Actualizar el texto de tiempo
-        timeText.text = $"Tiempo: {currentTime:F2}";
-
-        // Comprobar si el jugador ha presionado la tecla correcta en el momento adecuado
-        if (currentInstructionIndex < instructionTimes.Length)
+        if (isGameOver)
         {
-            // Verificar si se ha presionado la tecla correspondiente
-            if (Input.GetKeyDown(keysToPress[currentInstructionIndex]))
-            {
-                if (CheckBeat(currentTime))
-                {
-                    instructionText.color = correctColor;
-                }
-                else
-                {
-                    instructionText.color = incorrectColor;
-                    LoseLife();
-                }
-            }
+            return;
+        }
+        if (playerController.isMoving == false && enemyController.isTurned == true)
+        {
+            cameraShake.TriggerShake(0.2f);
+            LoseLife();
+            enemyController.isTurned = false;
+        }
+    }
+
+    public void StartGame()
+    {
+        // Detener la música de inicio y comenzar la música de juego
+        if (startMusic.isPlaying)
+        {
+            startMusic.Stop();
+        }
+
+        if (gameplayMusic != null)
+        {
+            gameplayMusic.Play(); // Comenzar la música de juego
         }
     }
 
     public bool CheckBeat(float currentTime)
     {
-        if (currentInstructionIndex < instructionTimes.Length)
+        float beatTime = GetNearestBeatTime(currentTime);
+
+        if (Mathf.Abs(currentTime - beatTime) <= beatMarginOfError)
         {
-            float instructionTime = instructionTimes[currentInstructionIndex];
-            return (currentTime >= instructionTime - beforeThreshold) && (currentTime <= instructionTime + afterThreshold);
+            if (playerController.isMoving == false && enemyController.isTurned == true)
+            {
+                LoseLife();
+                enemyController.isTurned = false;
+            }
+
+            return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
-    IEnumerator ShowInstructionsRoutine()
+    float GetNearestBeatTime(float currentTime)
     {
-        while (isPlayerActive)
-        {
-            if (currentInstructionIndex < instructions.Length)
-            {
-                instructionText.text = instructions[currentInstructionIndex];
-
-                // Esperar hasta el momento del beat
-                float waitTime = instructionTimes[currentInstructionIndex] - audioSource.time;
-                if (waitTime > 0)
-                {
-                    yield return new WaitForSeconds(waitTime);
-                }
-
-                currentInstructionIndex++;
-            }
-            else
-            {
-                yield break; // Finaliza la Coroutine si no hay más instrucciones
-            }
-        }
+        float beatInterval = 1f;
+        int beatIndex = Mathf.RoundToInt(currentTime / beatInterval);
+        return beatIndex * beatInterval;
     }
 
     public void LoseLife()
     {
-        totalLives--;
-        if (totalLives <= 0)
+        currentLives--;
+
+        if (currentLives <= 0)
         {
-            isPlayerActive = false;
-            instructionText.text = "Perdiste";
-            StartCoroutine(RestartSceneAfterDelay(2f));
+            GameOver();
         }
         else
         {
-            instructionText.text = $"Te quedan {totalLives} vidas";
+            UpdateLivesText();
         }
     }
 
-    private IEnumerator RestartSceneAfterDelay(float delay)
+    void UpdateLivesText()
     {
-        yield return new WaitForSeconds(delay);
-        // Aquí puedes reiniciar la escena
+        if (livesText != null)
+        {
+            livesText.text = "Vidas: " + currentLives.ToString();
+        }
+    }
+
+    void GameOver()
+    {
+        isGameOver = true;
+        gameOverText.text = "Game Over";
+
+        if (loseMusic != null)
+        {
+            loseMusic.Play(); // Reproducir la música de perder
+        }
+
+        if (gameplayMusic.isPlaying)
+        {
+            gameplayMusic.Stop(); // Detener la música de juego
+        }
+
+        playerController.enabled = false;
+        enemyController.enabled = false;
+    }
+
+    public void AddScore()
+    {
+        score++;
+        UpdateScoreText();
+
+        // Condición de victoria
+        if (score >= targetScore)
+        {
+            WinGame();
+        }
+    }
+
+    void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score.ToString();
+        }
+    }
+
+    void WinGame()
+    {
+        isGameOver = true;
+
+        if (winMusic != null)
+        {
+            winMusic.Play(); // Reproducir la música de ganar
+        }
+
+        if (gameplayMusic.isPlaying)
+        {
+            gameplayMusic.Stop(); // Detener la música de juego
+        }
+
+        winCanvas.gameObject.SetActive(true);
+        winObject.gameObject.SetActive(true);  // Activamos el Canvas de victoria
+        mainCanvas.gameObject.SetActive(false);  // Desactivamos el Canvas principal
+        playerController.enabled = false;
+        enemyController.enabled = false;
+
+        GameManagerM1.instance.GameWon(); // Llama al método GameWon de GameManagerM1
     }
 
     public bool HasLost()
     {
-        return totalLives <= 0;
+        return currentLives <= 0;
     }
 }

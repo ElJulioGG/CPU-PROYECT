@@ -6,21 +6,17 @@ public class BeatScroller : MonoBehaviour
 {
     public float beatTempo;
     public bool hasStarted;
+
     void Start()
     {
-        beatTempo = beatTempo / 60f;
+        beatTempo = beatTempo / 60f; // Convertir el tempo de beats por minuto a velocidad
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!hasStarted)
+        if (hasStarted)
         {
-
-
-        }
-        else {
-            transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f);
+            transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f); // Mover las notas en Y
         }
     }
 }

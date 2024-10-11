@@ -9,19 +9,21 @@ public class ButtonController : MonoBehaviour
     public Sprite pressImage;
 
     public KeyCode keyToPress;
-    // Start is called before the first frame update
+
     void Start()
     {
-        theSR = GetComponent<SpriteRenderer>();   
+        theSR = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(keyToPress)) {
+        if (Input.GetKeyDown(keyToPress))
+        {
             theSR.sprite = pressImage;
         }
-        if (Input.GetKeyUp(keyToPress)) {
+
+        if (Input.GetKeyUp(keyToPress))
+        {
             theSR.sprite = defaultImage;
         }
     }
