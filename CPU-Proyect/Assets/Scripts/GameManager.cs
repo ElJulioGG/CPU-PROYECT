@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+       // AudioManager.instance.PlayMusic("StealthTheme");//Only for now 
 
         if (instance == null)
         {

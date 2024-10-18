@@ -17,4 +17,12 @@ public class SoundDialogManager : MonoBehaviour
     {
         source.PlayOneShot(sound);
     }
+    public void StopSounds()
+    {
+        source.Stop();
+    }
+    public void ChangePitch(float level)
+    {
+        source.pitch = level;
+    }
 }
