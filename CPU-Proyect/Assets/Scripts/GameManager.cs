@@ -34,4 +34,8 @@ public class GameManager : MonoBehaviour
     {
         playerCanMove = newState;
     }
+    private void Start()
+    {
+        EventManager.OnTimerStart();
+    }
 }
