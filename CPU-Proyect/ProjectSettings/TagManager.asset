@@ -10,6 +10,8 @@ TagManager:
   - Bullet
   - Undefined
   - Activator
+  - NoteLine
+  - NoteDeleter
   layers:
   - Default
   - TransparentFX

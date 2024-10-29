@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [Header("Player Variables")]
+    [SerializeField] public int lastSelectedNote = 0;
     [Header("Player Stats")]
     [SerializeField] public int playerHealth = 3;
     [Header("Player Status")]

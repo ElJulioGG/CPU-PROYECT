@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 73b5aed8e8de2d84c8163bdfecc39c0f, type: 3}
   - {fileID: 8300000, guid: 0f0aef46da704eb41ac152228944819e, type: 3}
   soundPerCharFrequency: 4
-  minPitch: 0.8
-  maxPitch: 1
+  minPitch: 1.77
+  maxPitch: 2.02
   makePredictable: 1

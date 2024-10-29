@@ -92,5 +92,9 @@ public class AudioManager : MonoBehaviour
             //ver la documentacion de unity
         }
     }
+    public void PitchUI(float newPitch)
+    {
+        UISource.pitch = newPitch;
+    }
 }
 
