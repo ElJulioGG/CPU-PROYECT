@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManagerM1 : MonoBehaviour
 {
@@ -24,7 +25,9 @@ public class GameManagerM1 : MonoBehaviour
     public Text scoreText;
     public Text multiText;
     public Button startButton;  // Referencia al botón de inicio
+    public Transform startButton2;  // Referencia al botón de inicio
     public MusicReactiveParticles musicReactiveParticles; // Referencia al script de partículas
+    public HorizontalObjectMover mover;
 
     void Start()
     {
@@ -40,6 +43,7 @@ public class GameManagerM1 : MonoBehaviour
         // Desactiva los movimientos y la música hasta que el botón sea presionado
         theBS.hasStarted = false;
         audioSource.Stop();
+        startButton2.DOMoveX(1300f, 1.4f).SetEase(Ease.OutBounce);
     }
 
     void Update()
@@ -64,7 +68,6 @@ public class GameManagerM1 : MonoBehaviour
         audioSource.clip = gameplayMusic;
         audioSource.Play();
 
-        // Esconder el botón de inicio
         startButton.gameObject.SetActive(false);
 
         // Iniciar las partículas

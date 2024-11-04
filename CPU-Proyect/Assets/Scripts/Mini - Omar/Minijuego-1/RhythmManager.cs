@@ -12,11 +12,17 @@ public class RhythmManager : MonoBehaviour
     private int currentLives;
     public Text livesText;
     public Text gameOverText;
-    public Canvas winCanvas; // Canvas para el mensaje de victoria
+
     public GameObject winObject;
+    public GameObject FlechasObject;
+    public GameObject ButtonObject;
+    public GameObject CameraObject;
+    public Canvas gameOverCanvas; // Canvas para el mensaje de victoria
+    public Canvas winCanvas; // Canvas para el mensaje de victoria
     public Canvas mainCanvas; // Canvas principal del juego
     public PlayerController playerController;
     public EnemyController enemyController;
+    public CameraSW cameraSW;
     public bool isGameOver = false;
     public CameraShake cameraShake;
     public Text scoreText; // Texto para mostrar la puntuación
@@ -34,6 +40,8 @@ public class RhythmManager : MonoBehaviour
         UpdateLivesText();
         UpdateScoreText();
         gameOverText.text = "";
+        gameOverCanvas.gameObject.SetActive(false);  // Desactivar el Canvas de Game Over inicialmente
+
         winCanvas.gameObject.SetActive(false);  // Desactivar el Canvas de victoria inicialmente
         mainCanvas.gameObject.SetActive(true);  // Inicialmente desactivamos el Canvas de victoria
 
@@ -138,6 +146,10 @@ public class RhythmManager : MonoBehaviour
 
         playerController.enabled = false;
         enemyController.enabled = false;
+
+        // Mostrar el Canvas de Game Over y ocultar el Canvas principal
+        gameOverCanvas.gameObject.SetActive(true);
+        mainCanvas.gameObject.SetActive(false);
     }
 
     public void AddScore()
@@ -175,13 +187,21 @@ public class RhythmManager : MonoBehaviour
         }
 
         winCanvas.gameObject.SetActive(true);
-        winObject.gameObject.SetActive(true);  // Activamos el Canvas de victoria
-        mainCanvas.gameObject.SetActive(false);  // Desactivamos el Canvas principal
+        winObject.gameObject.SetActive(true);
+        FlechasObject.gameObject.SetActive(false);
+        ButtonObject.gameObject.SetActive(false);
+        CameraObject.gameObject.SetActive(false);
+        mainCanvas.gameObject.SetActive(false);
+
+        // Desactivar los controladores y elementos del juego
         playerController.enabled = false;
-        enemyController.enabled = false;
+        enemyController.isGameWon = true;  // Notificamos al enemigo que se ganó el juego
+        cameraSW.enabled = false;
 
         GameManagerM1.instance.GameWon(); // Llama al método GameWon de GameManagerM1
     }
+
+
 
     public bool HasLost()
     {
