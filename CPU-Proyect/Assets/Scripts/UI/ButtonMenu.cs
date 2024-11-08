@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class ButtonMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+public class ButtonMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler
 {
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -76,7 +76,7 @@ public class ButtonMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        transform.SetAsLastSibling();
+        
         isDragging = true;
         originalPosition = rectTransform.position;  // Save the starting position
     }
@@ -87,6 +87,10 @@ public class ButtonMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        transform.SetAsLastSibling();
+    }
     public void OnEndDrag(PointerEventData eventData)
     {
         isDragging = false;
@@ -148,6 +152,7 @@ public class ButtonMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         return closestCell;
     }
 
+    
     private ButtonMenu GetButtonAtCell(RectTransform cell)
     {
         foreach (ButtonMenu button in FindObjectsOfType<ButtonMenu>())
