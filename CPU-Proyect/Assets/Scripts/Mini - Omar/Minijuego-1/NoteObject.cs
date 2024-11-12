@@ -80,7 +80,6 @@ public class NoteObject : MonoBehaviour
             canBePressed = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Activator")
@@ -93,12 +92,12 @@ public class NoteObject : MonoBehaviour
                 GameManagerM1.instance.NoteMissed();
                 Instantiate(missedEffect, transform.position, missedEffect.transform.rotation);
 
-                // Verificar si el jugador se ha movido
-                bool playerMoved = playerController.IsMoving(); // Asegúrate de implementar este método en PlayerController
+                // Incrementar el contador de flechas perdidas en el RhythmManager
                 RhythmManager rhythmManager = FindObjectOfType<RhythmManager>();
-                //rhythmManager.CheckForMissedHit(playerMoved); // Llama a la función de pérdida de vida
+                rhythmManager.IncrementMissedArrows();
             }
         }
     }
+
 
 }

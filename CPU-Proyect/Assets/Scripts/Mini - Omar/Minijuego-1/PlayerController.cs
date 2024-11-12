@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;  // Referencia al componente Animator
     private EnemyController enemyController;  // Referencia al controlador del enemigo
+    [SerializeField] ParticleSystem moveParticleSystem; // Referencia al sistema de partículas
 
     void Start()
     {
@@ -50,6 +51,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void PlayMoveParticle()
+    {
+        if (moveParticleSystem != null)
+        {
+            moveParticleSystem.Play();
+        }
+    }
+
     public bool IsMoving()
     {
         return isMoving;  // Devuelve el estado del movimiento
@@ -59,7 +68,9 @@ public class PlayerController : MonoBehaviour
     {
         isMoving = true;
 
-     
+        // Activamos el efecto de partículas antes del movimiento
+        PlayMoveParticle();
+
         SetPreMoveAnimation();
         yield return new WaitForSeconds(0.3f);  // Espera antes de moverse
 
@@ -91,8 +102,9 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(stayDuration);  // Tiempo de permanencia en la nueva posición
 
-        // Regresa a la posición original
+        // Regresa a la posición original y activa el efecto de partículas nuevamente
         transform.position = new Vector3(originalXPosition, transform.position.y, transform.position.z);
+        PlayMoveParticle();
         SetPreMoveAnimation();  // Vuelve a la animación pre-movimiento
 
         yield return new WaitForSeconds(0.3f);  // Espera un poco antes de terminar el movimiento

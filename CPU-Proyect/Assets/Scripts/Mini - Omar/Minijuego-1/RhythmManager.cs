@@ -29,6 +29,8 @@ public class RhythmManager : MonoBehaviour
     public int score = 0; // Puntuación del jugador
     public int targetScore = 10; // Puntuación para ganar
 
+    private int missedArrowsCount = 0; // Contador de flechas perdidas
+
     void Start()
     {
         if (cameraShake == null)
@@ -58,11 +60,13 @@ public class RhythmManager : MonoBehaviour
         {
             return;
         }
+
+        // Si el enemigo se voltea y el jugador no se ha movido, pierde una vida
         if (playerController.isMoving == false && enemyController.isTurned == true)
         {
             cameraShake.TriggerShake(0.2f);
-            LoseLife();
-            enemyController.isTurned = false;
+            LoseLife();  // Resta una vida
+            enemyController.isTurned = false;  // Resetear el estado de volteo del enemigo
         }
     }
 
@@ -88,7 +92,7 @@ public class RhythmManager : MonoBehaviour
         {
             if (playerController.isMoving == false && enemyController.isTurned == true)
             {
-                LoseLife();
+                LoseLife(); // Pierde vida si el enemigo se voltea
                 enemyController.isTurned = false;
             }
 
@@ -105,6 +109,18 @@ public class RhythmManager : MonoBehaviour
         float beatInterval = 1f;
         int beatIndex = Mathf.RoundToInt(currentTime / beatInterval);
         return beatIndex * beatInterval;
+    }
+
+    // Método para incrementar el contador de flechas perdidas
+    public void IncrementMissedArrows()
+    {
+        missedArrowsCount++;
+
+        if (missedArrowsCount >= 10)
+        {
+            LoseLife();  // Pierde una vida si se pierden 10 flechas
+            missedArrowsCount = 0; // Reinicia el contador después de perder una vida
+        }
     }
 
     public void LoseLife()
@@ -200,8 +216,6 @@ public class RhythmManager : MonoBehaviour
 
         GameManagerM1.instance.GameWon(); // Llama al método GameWon de GameManagerM1
     }
-
-
 
     public bool HasLost()
     {
