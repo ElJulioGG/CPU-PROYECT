@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   color:
     m_OverrideState: 1
     m_Value: {r: 0.31629717, g: 0.08896404, b: 0.3207547, a: 1}
@@ -41,10 +41,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.512
+    m_Value: 0.564
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 0.263
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
     m_Value: 0.93
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.37
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Value: 3.12
   contrast:
     m_OverrideState: 1
-    m_Value: 11.8
+    m_Value: -79
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 0.7477867, g: 0.63584906, b: 1, a: 1}
@@ -141,7 +141,7 @@ MonoBehaviour:
     m_Value: 176
   saturation:
     m_OverrideState: 1
-    m_Value: 5.2
+    m_Value: -57
 --- !u!114 &3830395394151253139
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.115
 --- !u!114 &7358416194251901294
 MonoBehaviour:
   m_ObjectHideFlags: 3
