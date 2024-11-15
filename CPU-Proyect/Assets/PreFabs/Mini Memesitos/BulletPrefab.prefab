@@ -166,3 +166,4 @@ MonoBehaviour:
   rotation: 0
   player: {fileID: 0}
   gameManager: {fileID: 0}
+  startPos: {x: -7, y: 0, z: 0}

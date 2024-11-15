@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     // Health Test stuff
     public GameObject player;
     public GameManager gameManager;
+    [SerializeField] private Vector3 startPos; //GameObject
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class Bullet : MonoBehaviour
         Vector2 direction = new Vector2(Mathf.Cos(rotation), Mathf.Sin(rotation)).normalized;
         rb.velocity = transform.right * speed;
         AudioManager.instance.PlayUI("EnemyShoot1");
+        player = GameObject.Find("Player");
     }
     //ss
 
@@ -37,11 +39,12 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Handle collision logic here
-        // Example: if (other.gameObject.CompareTag("Player"))
-        // {
-        //     Destroy(gameObject);
-        // }
+    //Handle collision logic here
+    //Example:
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player.transform.position = startPos;
+        }
         
         // Health test on hit
         //if (other.gameObject.CompareTag("Player"))

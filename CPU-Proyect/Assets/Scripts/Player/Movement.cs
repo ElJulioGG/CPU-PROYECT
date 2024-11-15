@@ -192,7 +192,7 @@ public class Movement : MonoBehaviour
     {
         if (other.transform.tag == "Bullet")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject); //borraba al player lmao
         }
     }
     // Start is called before the first frame update
