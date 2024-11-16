@@ -12,8 +12,13 @@ TagManager:
   - Activator
   - NoteLine
   - NoteDeleter
+<<<<<<< Updated upstream
   - Deadzone
   - Meta
+=======
+  - MainCameraTrigger
+  - WinCollider
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
