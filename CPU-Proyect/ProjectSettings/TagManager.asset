@@ -12,6 +12,8 @@ TagManager:
   - Activator
   - NoteLine
   - NoteDeleter
+  - Deadzone
+  - Meta
   layers:
   - Default
   - TransparentFX
