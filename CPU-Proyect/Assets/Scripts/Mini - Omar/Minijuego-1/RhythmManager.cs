@@ -12,7 +12,7 @@ public class RhythmManager : MonoBehaviour
     private int currentLives;
     public Text livesText;
     public Text gameOverText;
-
+    public Text missedArrowsText; // Texto para mostrar el contador de flechas falladas
     public GameObject winObject;
     //public GameObject winCollider;
     public GameObject FlechasObject;
@@ -41,6 +41,7 @@ public class RhythmManager : MonoBehaviour
 
         currentLives = totalLives;
         UpdateLivesText();
+        UpdateMissedArrowsText();
         UpdateScoreText();
         gameOverText.text = "";
         gameOverCanvas.gameObject.SetActive(false);  // Desactivar el Canvas de Game Over inicialmente
@@ -116,11 +117,20 @@ public class RhythmManager : MonoBehaviour
     public void IncrementMissedArrows()
     {
         missedArrowsCount++;
+        UpdateMissedArrowsText(); // Actualiza el texto al incrementar el contador
 
         if (missedArrowsCount >= 10)
         {
             LoseLife();  // Pierde una vida si se pierden 10 flechas
             missedArrowsCount = 0; // Reinicia el contador después de perder una vida
+
+        }
+    }
+    void UpdateMissedArrowsText()
+    {
+        if (missedArrowsText != null)
+        {
+            missedArrowsText.text = "Flechas falladas: " + missedArrowsCount.ToString();
         }
     }
 
