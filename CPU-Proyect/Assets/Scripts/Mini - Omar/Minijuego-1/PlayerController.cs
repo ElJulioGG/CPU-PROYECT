@@ -11,13 +11,14 @@ public class PlayerController : MonoBehaviour
     private Animator animator;  // Referencia al componente Animator
     private EnemyController enemyController;  // Referencia al controlador del enemigo
     [SerializeField] ParticleSystem moveParticleSystem; // Referencia al sistema de partículas
+    private RhythmManager RhythmManager;
 
     void Start()
     {
-        // Asigna la referencia al EnemyController
         enemyController = FindObjectOfType<EnemyController>();
+        RhythmManager = FindObjectOfType<RhythmManager>(); // Encuentra el RhythmManager automáticamente
         animator = GetComponent<Animator>();
-        SetIdleAnimation();  // Por defecto, comenzamos en estado idle
+        SetIdleAnimation(); // Por defecto, comenzamos en estado idle
     }
 
     void Update()
@@ -150,4 +151,24 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isPreMove", false);
         animator.SetBool("isMoving", true);
     }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("WinCollider"))
+        {
+            Debug.Log("Colisión con el WinCollider detectada. Activando victoria.");
+
+            // Verifica que RhythmManager esté asignado
+            if (RhythmManager != null)
+            {
+                RhythmManager.WinGame(); // Llama al método WinGame del RhythmManager
+            }
+            else
+            {
+                Debug.LogError("RhythmManager no está asignado en PlayerController.");
+            }
+        }
+    }
+
 }

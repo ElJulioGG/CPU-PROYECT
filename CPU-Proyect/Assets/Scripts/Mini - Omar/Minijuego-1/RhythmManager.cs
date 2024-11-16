@@ -14,10 +14,11 @@ public class RhythmManager : MonoBehaviour
     public Text gameOverText;
 
     public GameObject winObject;
+    //public GameObject winCollider;
     public GameObject FlechasObject;
     public GameObject ButtonObject;
     public GameObject CameraObject;
-    public Canvas gameOverCanvas; // Canvas para el mensaje de victoria
+    public Canvas gameOverCanvas; // Canvas para el mensaje de victoriawinObject
     public Canvas winCanvas; // Canvas para el mensaje de victoria
     public Canvas mainCanvas; // Canvas principal del juego
     public PlayerController playerController;
@@ -27,7 +28,7 @@ public class RhythmManager : MonoBehaviour
     public CameraShake cameraShake;
     public Text scoreText; // Texto para mostrar la puntuación
     public int score = 0; // Puntuación del jugador
-    public int targetScore = 10; // Puntuación para ganar
+    public int targetScore; // Puntuación para ganar
 
     private int missedArrowsCount = 0; // Contador de flechas perdidas
 
@@ -188,7 +189,7 @@ public class RhythmManager : MonoBehaviour
         }
     }
 
-    void WinGame()
+   public void WinGame()
     {
         isGameOver = true;
 
@@ -221,4 +222,7 @@ public class RhythmManager : MonoBehaviour
     {
         return currentLives <= 0;
     }
+
+
+
 }
