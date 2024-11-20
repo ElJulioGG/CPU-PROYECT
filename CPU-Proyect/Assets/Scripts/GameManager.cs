@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [Header("Player Variables")]
     [SerializeField] public int lastSelectedNote = 0;
+    [SerializeField] public float securityLevel = 0f;
     [Header("Player Stats")]
     [SerializeField] public int playerHealth = 3;
     [Header("Player Status")]
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool playerDied = false;
     [SerializeField] public bool playerCanAction = true;
     [SerializeField] public bool playerInvincibility = false;
+    
 
     private void Awake()
     {

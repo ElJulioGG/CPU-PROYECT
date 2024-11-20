@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -71,6 +72,8 @@ public class MenuManager : MonoBehaviour
         {
             case 0:
 
+                SceneManager.LoadScene("JulioScene");
+                AudioManager.instance.musicSource.Stop();
                 break;
             case 1:
                 break;

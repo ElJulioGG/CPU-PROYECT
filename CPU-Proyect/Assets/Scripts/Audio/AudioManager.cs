@@ -79,6 +79,11 @@ public class AudioManager : MonoBehaviour
             sfxLoopSource.Play();
         }
     }
+
+    public void StopSFXLoop()
+    {
+        sfxLoopSource.Stop();
+    }
     public void PlayUI(string name)
     {
         Sounds s = Array.Find(UISounds, x => x.name == name);

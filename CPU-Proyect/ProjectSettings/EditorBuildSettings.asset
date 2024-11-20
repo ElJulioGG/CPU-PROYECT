@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/JulioScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Omar-Minijuegos/Minijuego-1/GAME.unity
     guid: e0bc5a80998a93b43b6ed01eeefbba89
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: f7d1bb41f5ebe104dab285b65d2b92c0
   m_configObjects: {}
