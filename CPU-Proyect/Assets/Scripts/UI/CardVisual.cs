@@ -4,7 +4,6 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro; // Required for TextMeshPro
 using UnityEngine.EventSystems;
-using Microsoft.Unity.VisualStudio.Editor;
 
 public class CardVisual : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
