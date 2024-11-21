@@ -31,10 +31,10 @@ public class Goal : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // Change scene 
-            player.transform.position = startPos;
-            Debug.Log("Aloooooooooooooo");
+            //player.transform.position = startPos;
+            //Debug.Log("Aloooooooooooooo");
             gameWin.SetActive(true);
-
+            GameObject.Destroy(player);
         }
     }
 }
