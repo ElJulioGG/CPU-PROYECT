@@ -10,6 +10,7 @@ TagManager:
   - Spike
   - Bullet
   - GoalMeme
+  - MemeBackground
   layers:
   - Default
   - TransparentFX

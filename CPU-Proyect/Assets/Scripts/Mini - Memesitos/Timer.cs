@@ -6,6 +6,9 @@ using System;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] public float activeMoveSpeed; //
+    [SerializeField] public float moveSpeed; //
+    public GameObject gameOver;
     private TMP_Text _timerText;
     enum TimerType {Countdown, Stopwatch}
     [SerializeField] private TimerType timerType;
@@ -38,9 +41,11 @@ public class Timer : MonoBehaviour
         _isRunning = true;
     }
 
-    private void EventManagerOnTimerStop()
+    private void EventManagerOnTimerStop() //
     {
         _isRunning = false;
+        //gameOver.SetActive(true);
+        activeMoveSpeed = 0f;
     }
 
     private void EventManagerOnTimerUpdate(float value)

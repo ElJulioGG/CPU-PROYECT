@@ -6,8 +6,8 @@ public class Goal : MonoBehaviour
 {
     private Rigidbody2D rb;
     public GameObject player;
-    //public GameObject gameOver;
-    //public GameObject gameWin;
+    public GameObject gameOver;
+    public GameObject gameWin;
     public GameManager gameManager;
     [SerializeField] private Vector3 startPos; //TEST
 
@@ -17,8 +17,7 @@ public class Goal : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-        //gameOver = GameObject.Find("BackGround");
-        //gameWin = GameObject.Find("BackGround (1)");
+
     }
 
     // Update is called once per frame
@@ -34,7 +33,8 @@ public class Goal : MonoBehaviour
             // Change scene 
             player.transform.position = startPos;
             Debug.Log("Aloooooooooooooo");
-            //GameObject.Find("BackGround").SetActive(true);
+            gameWin.SetActive(true);
+
         }
     }
 }
