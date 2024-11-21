@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    public Animator playerAnimator;
     [SerializeField] public float activeMoveSpeed = 1f;
     [SerializeField] public float moveSpeed = 1f;
     [SerializeField] public float dashMoveSpeed = 2f;
@@ -78,6 +79,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         if (/*!inDialogue() && */GameManager.instance.playerCanMove)
         {
             if (isDashing)
@@ -88,6 +90,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            movement = Vector2.zero;
             rb.velocity = Vector2.zero;
         }
 
@@ -104,11 +107,13 @@ public class Movement : MonoBehaviour
         rb.MovePosition(rb.position + movement * (activeMoveSpeed * Time.fixedDeltaTime));
         if (movement != Vector2.zero)
         {
-           // playerAnimator.SetBool("IsRunning", true);
+           playerAnimator.SetBool("IsRunning", true);
+            print("RunningTrue");
         }
         else
         {
-           // playerAnimator.SetBool("IsRunning", false);
+           playerAnimator.SetBool("IsRunning", false);
+            print("RunningFalse");
         }
     }
 
