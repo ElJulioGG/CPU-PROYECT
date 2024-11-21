@@ -94,7 +94,7 @@ Material:
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
-    - _WeightBold: 0.5
+    - _WeightBold: 0.75
     - _WeightNormal: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
@@ -188,7 +188,7 @@ MonoBehaviour:
   atlas: {fileID: 0}
   m_AtlasWidth: 1024
   m_AtlasHeight: 1024
-  m_AtlasPadding: 20
+  m_AtlasPadding: 10
   m_AtlasRenderMode: 4165
   m_glyphInfoList: []
   m_KerningTable:

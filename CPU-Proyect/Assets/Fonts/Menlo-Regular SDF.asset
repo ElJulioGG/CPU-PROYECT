@@ -18,8 +18,8 @@ MonoBehaviour:
   m_Version: 1.1.0
   m_SourceFontFileGUID: 0b15b01fc447b5d4291b35b0f5f8eee1
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 0b15b01fc447b5d4291b35b0f5f8eee1, type: 3}
-  m_SourceFontFile: {fileID: 12800000, guid: 0b15b01fc447b5d4291b35b0f5f8eee1, type: 3}
-  m_AtlasPopulationMode: 1
+  m_SourceFontFile: {fileID: 0}
+  m_AtlasPopulationMode: 0
   m_FaceInfo:
     m_FaceIndex: 0
     m_FamilyName: Menlo
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   atlas: {fileID: 0}
   m_AtlasWidth: 1024
   m_AtlasHeight: 1024
-  m_AtlasPadding: 20
+  m_AtlasPadding: 3
   m_AtlasRenderMode: 4169
   m_glyphInfoList: []
   m_KerningTable:
@@ -3042,9 +3042,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.75
-    - _ScaleRatioB: 0.609375
-    - _ScaleRatioC: 0.609375
+    - _ScaleRatioA: 0.95238096
+    - _ScaleRatioB: 0.77380955
+    - _ScaleRatioC: 0.77380955
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
