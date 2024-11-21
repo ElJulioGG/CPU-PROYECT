@@ -8,6 +8,8 @@ TagManager:
   - Meta
   - Obstacle
   - Spike
+  - Bullet
+  - GoalMeme
   layers:
   - Default
   - TransparentFX

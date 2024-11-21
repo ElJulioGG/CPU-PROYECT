@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Vector2 direction = new Vector2(Mathf.Cos(rotation), Mathf.Sin(rotation)).normalized;
         rb.velocity = transform.right * speed;
-        AudioManager.instance.PlayUI("EnemyShoot1");
+        //AudioManager.instance.PlayUI("EnemyShoot1");
         player = GameObject.Find("Player");
     }
     //ss
