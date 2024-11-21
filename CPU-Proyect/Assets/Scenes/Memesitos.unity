@@ -3542,6 +3542,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &685819719 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -261737637809602485, guid: e56c136a3d74a0540b40ba382c3e6cf3, type: 3}
+  m_PrefabInstance: {fileID: 1206012850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89531d2362aee62429d5971ff4605d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &696069666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5308,6 +5319,7 @@ MonoBehaviour:
   gameOver: {fileID: 1623966812}
   gameWin: {fileID: 0}
   timerType: 0
+  goal: {fileID: 685819719}
   timeToDisplay: 10
 --- !u!114 &985904873
 MonoBehaviour:

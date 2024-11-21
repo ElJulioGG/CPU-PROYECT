@@ -12,15 +12,15 @@ public class Timer : MonoBehaviour
     private TMP_Text _timerText;
     enum TimerType {Countdown, Stopwatch}
     [SerializeField] private TimerType timerType;
-
+    [SerializeField] private Goal goal;
     [SerializeField] private float timeToDisplay = 60.0f;
-
     private bool _isRunning;
 
     private void Awake()
     {
        _timerText = GetComponent<TMP_Text>();
         player = GameObject.Find("Player");
+
     }
 
     private void OnEnable()
@@ -63,26 +63,26 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        //if (gameWin == true)
-        //{
-        //    timeToDisplay = 9999f;
-        //    //OnDisable();
-        //    //EventManager.OnTimerPause();
-        //    return;
-        //}
         if (!_isRunning) return;
-        if (timerType == TimerType.Countdown && timeToDisplay < 0.0f)
+        if (timerType == TimerType.Countdown && timeToDisplay < 0.0f && goal.win == false)
         {
             EventManager.OnTimerStop();
             gameOver.SetActive(true);
             GameObject.Destroy(player);
             return;
+            
+            if (gameWin == true && timerType == TimerType.Countdown && timeToDisplay > 0.0f)
+            {
+                _isRunning = false; 
+                //gameObject.SetActive(false);
+            }
         }
         
-        if (_isRunning && gameWin == true)
-        {
-            timeToDisplay = 9999f;
-        }
+        //if (gameWin == true && timerType == TimerType.Countdown && timeToDisplay > 0.0f)
+        //{
+        //    //timeToDisplay = 50.0f;
+        //    gameObject.SetActive(false);
+        //}
 
         timeToDisplay += timerType == TimerType.Countdown ? -Time.deltaTime : Time.deltaTime;
 

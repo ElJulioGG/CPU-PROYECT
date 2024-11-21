@@ -10,7 +10,8 @@ public class Goal : MonoBehaviour
     public GameObject gameWin;
     public GameManager gameManager;
     [SerializeField] private Vector3 startPos; //TEST
-
+    public bool win = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Goal : MonoBehaviour
             // Change scene 
             //player.transform.position = startPos;
             //Debug.Log("Aloooooooooooooo");
+            win = true;
             gameWin.SetActive(true);
             GameObject.Destroy(player);
         }
