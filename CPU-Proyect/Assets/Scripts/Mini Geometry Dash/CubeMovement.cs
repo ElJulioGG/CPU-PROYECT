@@ -9,7 +9,7 @@ public class CubeMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform feetpos;
     [SerializeField] private float DistanciaSuelo = 0.009f;
-    [SerializeField] private float jumptimeMax = 0.3f;
+    [SerializeField] private float jumptimeMax = 10f;
     [SerializeField] public bool isGrounded = false;
     [SerializeField] VictoryScreen victoryScreen;
     private bool isChargingJump = false;
@@ -44,7 +44,7 @@ public class CubeMovement : MonoBehaviour
             {
 
                 isChargingJump = true;
-                rb.gravityScale = 50;
+                rb.gravityScale = 60;
                 jumptimer = 0f;
             }
 
