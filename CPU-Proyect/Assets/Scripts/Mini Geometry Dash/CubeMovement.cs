@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class CubeMovement : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class CubeMovement : MonoBehaviour
     private float jumptimer;
     private float speed = 7f;
     public bool GameOver = false;
+    //public Text text1;
 
 
     private void Start()
@@ -23,6 +26,7 @@ public class CubeMovement : MonoBehaviour
     }
     private void Update()
     {
+        //text1 = GetComponent<Text>();
         if (GameOver == false)
         {
             // Movimiento horizontal del cubo
