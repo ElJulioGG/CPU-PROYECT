@@ -15518,6 +15518,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 677021739ee33b04c88473051dbe0caa, type: 3}
   - name: Alarm
     clip: {fileID: 8300000, guid: a7da36ad2366b3f4e85fb467c18bb59c, type: 3}
+  - name: Encounter
+    clip: {fileID: 8300000, guid: 060a080561b972747b4cc443631b82c1, type: 3}
   FootStepsSounds: []
   UISounds:
   - name: noteA

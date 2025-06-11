@@ -72,6 +72,7 @@ public class NPCInteraction : MonoBehaviour
         if (npc != null)
         {
             GameManager.instance.playerIsInDialog = true;
+            GameManager.instance.playerCanMove = false;
             return npc.DialogActive();
         }
         else

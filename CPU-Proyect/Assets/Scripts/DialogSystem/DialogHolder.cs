@@ -13,6 +13,7 @@ namespace DialogSystem
         }
         private IEnumerator dialogSequence()
         {
+            GameManager.instance.playerCanMove = false;
             if (!dialogFinished)
             {
                 for (int i = 0; i < transform.childCount - 1; i++)
